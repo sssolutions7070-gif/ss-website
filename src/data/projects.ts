@@ -1,0 +1,282 @@
+import type { Project } from "@/types";
+
+/**
+ * "Projects" section — real work delivered by SS Solutions.
+ * Images live in /public/work/<project>/. Gallery images show as clickable thumbnails.
+ */
+export const projects: Project[] = [
+  {
+    id: "best-food-services",
+    filters: ["web", "mobile"],
+    featured: true,
+    title: "Best Food Services",
+    category: "WEB + 3 ANDROID APPS",
+    status: "ON GOOGLE PLAY",
+    summary:
+      "A multi-vendor super-app for food, grocery, pharmacy, electronics, parcel delivery and car rental — with a customer website and separate Customer, Vendor and Delivery apps. Serving 25+ zones across Pune district and beyond, with an average 30-minute delivery.",
+    highlights: [
+      "Customer app: one app for six services, real-time order and ride tracking, COD / card / wallet payments",
+      "Vendor app: instant order alerts, menu and inventory management, earnings and in-app customer chat",
+      "Delivery app: live navigation, real-time location sharing, earnings wallet and multi-language support",
+      "Website: location search, delivery-zone finder, seller and rider onboarding",
+    ],
+    stack: ["Multi-vendor", "Live tracking", "Android", "Web"],
+    image: "/work/bfs/website.png",
+    gallery: [
+      { src: "/work/bfs/website.png", alt: "Best Food Services website home page" },
+      { src: "/work/bfs/app-1.png", alt: "Customer app — six services in one home screen", portrait: true },
+      { src: "/work/bfs/app-2.png", alt: "Customer app — food search and special offers", portrait: true },
+      { src: "/work/bfs/app-3.png", alt: "Customer app — cart and checkout", portrait: true },
+      { src: "/work/bfs/app-4.png", alt: "Vendor app — business analytics and live orders", portrait: true },
+      { src: "/work/bfs/app-5.png", alt: "Vendor app — menu, banners, coupons and reports", portrait: true },
+      { src: "/work/bfs/app-6.png", alt: "Delivery app — rider profile and online status", portrait: true },
+      { src: "/work/bfs/app-7.png", alt: "Delivery app — earnings wallet", portrait: true },
+    ],
+    accent: "#16a34a",
+    results: [
+      { value: "25+", label: "Delivery zones served" },
+      { value: "~30 min", label: "Average delivery time" },
+      { value: "3", label: "Android apps on Google Play" },
+      { value: "1K+", label: "Customer app downloads" },
+    ],
+  },
+  {
+    id: "drivebloc",
+    filters: ["web", "mobile"],
+    title: "DriveBloc — Group Car Buying",
+    category: "WEB + MOBILE APP",
+    status: "LIVE",
+    summary:
+      "A group-buying marketplace for new cars in Maharashtra. Buyers join a free group for a model, and DriveBloc takes the combined demand to dealers for a better price.",
+    highlights: [
+      "Group deals by brand with live buyer counts",
+      "New-car catalogue, compare tool and buying guides",
+      "City pages for 40+ Maharashtra cities, plus a native Android app",
+      "Admin panel to run group deals end to end: buyers, dealer quotations, stages, commission, leads and bookings",
+    ],
+    stack: ["React Native", "Expo", "Google Sign-In"],
+    image: "/work/drivebloc/website.png",
+    gallery: [
+      { src: "/work/drivebloc/website.png", alt: "DriveBloc website home page" },
+      { src: "/work/drivebloc/admin-groups.png", alt: "Admin panel — group deals by stage" },
+      { src: "/work/drivebloc/cover.jpg", alt: "DriveBloc Play Store banner" },
+      { src: "/work/drivebloc/screenshot-1-home.png", alt: "App home screen", portrait: true },
+      { src: "/work/drivebloc/screenshot-2-groups.png", alt: "Open group deals", portrait: true },
+      { src: "/work/drivebloc/screenshot-3-car.png", alt: "Car details", portrait: true },
+      { src: "/work/drivebloc/screenshot-4-colours.png", alt: "Colour options", portrait: true },
+      { src: "/work/drivebloc/screenshot-5-prices.png", alt: "Variant prices", portrait: true },
+      { src: "/work/drivebloc/screenshot-6-best-price.png", alt: "Best group price", portrait: true },
+    ],
+    accent: "#e11d48",
+    results: [
+      { value: "40+", label: "Maharashtra city pages" },
+      { value: "Web + App", label: "Website and Android app" },
+      { value: "End-to-end", label: "Admin panel for group deals" },
+    ],
+  },
+  {
+    id: "swamini-foods",
+    filters: ["web"],
+    title: "Swamini Foods",
+    category: "E-COMMERCE WEBSITE",
+    status: "CLIENT PROJECT",
+    summary:
+      "An online store and brand website for Swamini Foods, a maker of premium traditional bilona ghee, with product showcase videos.",
+    highlights: [
+      "Product catalogue and online ordering",
+      "Brand storytelling around the bilona process",
+      "Promotional video production",
+    ],
+    stack: ["Web", "E-commerce", "Video"],
+    image: "/work/swamini/home.png",
+    gallery: [
+      { src: "/work/swamini/home.png", alt: "Swamini Foods home page" },
+      { src: "/work/swamini/shop.png", alt: "Ghee shop and product listing" },
+      { src: "/work/swamini/process.png", alt: "Bilona process page" },
+    ],
+    accent: "#d97706",
+  },
+  {
+    id: "vishwaguru-gaushala",
+    filters: ["web"],
+    title: "Vishwaguru Foundation — Gaushala",
+    category: "WEBSITE",
+    status: "CLIENT PROJECT",
+    summary:
+      "A Marathi-first website for the Vishwaguru Foundation gaushala, presenting its cow-care work, gallery and ways to donate or volunteer.",
+    highlights: [
+      "Marathi-first design with a warm, devotional visual style",
+      "Founder journey timeline, events and gurukul admissions",
+      "Optimised photo gallery, UPI donations and transparency section",
+    ],
+    stack: ["Next.js", "Tailwind CSS", "TypeScript"],
+    image: "/work/gaushala/website.png",
+    gallery: [
+      { src: "/work/gaushala/website.png", alt: "Vishwaguru Foundation website home page" },
+      { src: "/work/gaushala/timeline.png", alt: "Founder journey timeline section" },
+      { src: "/work/gaushala/photo-3.jpg", alt: "Gir cows at the gaushala" },
+      { src: "/work/gaushala/photo-4.jpg", alt: "Cow care at the gaushala" },
+      { src: "/work/gaushala/photo-5.jpg", alt: "Traditional cow-dung cake making" },
+      { src: "/work/gaushala/photo-7.jpg", alt: "Devotional reading event" },
+      { src: "/work/gaushala/photo-8.jpg", alt: "Kirtan programme" },
+    ],
+    accent: "#f59e0b",
+  },
+  {
+    id: "dreamrole",
+    filters: ["web", "ai"],
+    title: "DreamRole — AI Hiring Platform",
+    category: "WEB APP",
+    status: "CLIENT PROJECT",
+    summary:
+      "A hiring platform that matches candidates to jobs from their resume and lets recruiters run proctored aptitude tests, shortlist and schedule interviews.",
+    highlights: [
+      "Resume skill extraction with fuzzy job matching",
+      "Camera proctoring with OpenCV face and phone detection",
+      "Voice assistant in English, Hindi and Marathi",
+    ],
+    stack: ["Spring Boot", "React", "MySQL", "OpenCV"],
+    image: "/work/dreamrole/jobs.png",
+    gallery: [
+      { src: "/work/dreamrole/jobs.png", alt: "Resume-based job recommendations" },
+      { src: "/work/dreamrole/test.png", alt: "Camera-proctored aptitude test" },
+      { src: "/work/dreamrole/recruiter.png", alt: "Recruiter bulk-hiring dashboard" },
+    ],
+    accent: "#8b5cf6",
+    results: [
+      { value: "3", label: "Voice assistant languages" },
+      { value: "Live", label: "Camera-proctored tests" },
+    ],
+  },
+  {
+    id: "rag-agent",
+    filters: ["ai"],
+    title: "RAG AI Agent",
+    category: "AI / LLM",
+    status: "AI PROJECT",
+    summary:
+      "An AI agent that answers questions from your own documents using retrieval-augmented generation, giving grounded answers with sources.",
+    highlights: [
+      "Document ingestion and vector search",
+      "LLM answers grounded in retrieved context",
+      "Chat interface for teams",
+    ],
+    stack: ["Python", "LLM", "Vector DB"],
+    image: "/work/rag/chat.png",
+    gallery: [
+      { src: "/work/rag/chat.png", alt: "Chat with cited answers from documents" },
+      { src: "/work/rag/docs.png", alt: "Knowledge base and RAG pipeline" },
+    ],
+    accent: "#4f6bff",
+  },
+  {
+    id: "health-tip-chatbot",
+    filters: ["ai"],
+    title: "Health Tip Chatbot",
+    category: "AI ASSISTANT",
+    status: "AI PROJECT",
+    summary:
+      "A voice-enabled health assistant that answers questions using trusted medical sources such as WHO, CDC and Mayo Clinic.",
+    highlights: [
+      "Voice input and spoken answers",
+      "NLP health-query detection",
+      "Web interface and CLI",
+    ],
+    stack: ["Python", "Flask", "NLTK", "scikit-learn"],
+    image: "/work/health/chat.png",
+    gallery: [
+      { src: "/work/health/chat.png", alt: "Health chat with trusted sources" },
+      { src: "/work/health/voice.png", alt: "Voice input listening mode" },
+    ],
+    accent: "#14b8a6",
+  },
+  {
+    id: "fake-news-detection",
+    filters: ["ai"],
+    title: "Multimodal Fake News Detection",
+    category: "AI / DEEP LEARNING",
+    status: "RESEARCH PROJECT",
+    summary:
+      "A hybrid deep-learning system that classifies news using text, how it spreads, and its images, with explanations and a live dashboard.",
+    highlights: [
+      "Text, propagation-graph and visual branches fused",
+      "Real-time ingestion and alerts",
+      "Explainable predictions with a feedback retraining loop",
+    ],
+    stack: ["PyTorch", "Transformers", "FastAPI", "Streamlit"],
+    image: "/work/fakenews/analyze.png",
+    gallery: [
+      { src: "/work/fakenews/analyze.png", alt: "Article analysis with explainable verdict" },
+      { src: "/work/fakenews/dashboard.png", alt: "Live monitoring dashboard" },
+    ],
+    accent: "#ef4444",
+  },
+  {
+    id: "credential-verification",
+    filters: ["web"],
+    title: "Blockchain Credential Verification",
+    category: "WEB3",
+    status: "RESEARCH PROJECT",
+    summary:
+      "Universities issue tamper-proof academic credentials on a blockchain, students hold them in a digital wallet, and employers verify them in seconds.",
+    highlights: [
+      "Solidity smart contracts for issue and revocation",
+      "W3C DIDs and Verifiable Credentials",
+      "AES-256 encrypted storage with IPFS option",
+    ],
+    stack: ["Solidity", "Node.js", "React", "MongoDB"],
+    image: "/work/cred/verify.png",
+    gallery: [
+      { src: "/work/cred/verify.png", alt: "Verifier portal — authentic result" },
+      { src: "/work/cred/issuer.png", alt: "University issuer portal" },
+      { src: "/work/cred/wallet.png", alt: "Student credential wallet" },
+    ],
+    accent: "#6366f1",
+  },
+  {
+    id: "flowshift",
+    filters: ["mobile", "games"],
+    title: "FlowShift",
+    category: "MOBILE GAME",
+    status: "CLOSED TESTING",
+    summary:
+      "A fast, colourful arcade game where players guide a ball through shifting tubes and platforms, timing every move to keep the flow going. Easy to pick up, hard to master.",
+    highlights: [
+      "One-touch controls designed for quick sessions",
+      "Progressive difficulty with endless replay value",
+      "Vibrant neon visuals and smooth 60 fps animation",
+      "Score tracking to beat your personal best",
+    ],
+    stack: ["Android", "Game design", "Google Play"],
+    image: "/work/flowshift/menu.png",
+    gallery: [
+      { src: "/work/flowshift/menu.png", alt: "FlowShift title screen", portrait: true },
+      { src: "/work/flowshift/play.png", alt: "FlowShift gameplay", portrait: true },
+      { src: "/work/flowshift/over.png", alt: "Level complete screen", portrait: true },
+    ],
+    accent: "#ec4899",
+  },
+  {
+    id: "neon-escape",
+    filters: ["mobile", "games"],
+    title: "Neon Escape: Arrow Puzzle",
+    category: "MOBILE GAME",
+    status: "CLOSED TESTING",
+    summary:
+      "A brain-teasing puzzle game set in a glowing neon grid. Every arrow can only move in the direction it points — clear the board by sliding them out in the right order.",
+    highlights: [
+      "Hundreds of handcrafted levels from easy to expert",
+      "Hints and undo so players never get stuck",
+      "Relaxing neon art style with satisfying effects",
+      "Offline play, no timer pressure",
+    ],
+    stack: ["Android", "Puzzle design", "Google Play"],
+    image: "/work/neon/play.png",
+    gallery: [
+      { src: "/work/neon/play.png", alt: "Neon Escape puzzle grid", portrait: true },
+      { src: "/work/neon/levels.png", alt: "Level select", portrait: true },
+      { src: "/work/neon/win.png", alt: "Level complete screen", portrait: true },
+    ],
+    accent: "#06b6d4",
+  },
+];
