@@ -7,6 +7,10 @@
   # Next.js 16 needs Node 20.9 or newer
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+  # These two values are public on purpose (the contact email shown on the site
+  # and the site's own address), so Netlify's secret scanner may skip them.
+  # GMAIL_APP_PASSWORD is still scanned and must never appear in the code.
+  SECRETS_SCAN_OMIT_KEYS = "GMAIL_USER,NEXT_PUBLIC_SITE_URL"
 
 # Netlify's Next.js runtime: turns the build into real pages, the /api/contact
 # function and image optimisation. Without it, Netlify only serves the raw
