@@ -1,6 +1,9 @@
 # Netlify build settings for the SS Solutions Next.js site.
 [build]
-  command = "npm run build"
+  # Turbopack's build cache (.next/cache/turbopack) can contain copies of
+  # environment variables such as GMAIL_APP_PASSWORD. Delete it right after the
+  # build so it is never packaged into the deploy (Netlify's secret scan stays on).
+  command = "npm run build && rm -rf .next/cache/turbopack"
   publish = ".next"
 
 [build.environment]
