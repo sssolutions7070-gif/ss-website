@@ -30,25 +30,26 @@ const STAGES = [
     kicker: "Web + 3 Android apps",
     title: "Platforms that run a whole business",
     body: "Best Food Services — a customer website plus Customer, Vendor and Delivery apps for food, grocery, pharmacy, parcels and rides across 25+ zones.",
-    laptop: "/work/bfs/website.png",
-    phone: "/work/bfs/app-1.png",
+    laptop: "/work/tex/bfs-website.jpg",
+    phone: "/work/tex/bfs-app.jpg",
   },
   {
     kicker: "Marketplace + native app",
     title: "Marketplaces that bring people together",
     body: "DriveBloc — group car buying for Maharashtra, with a fast website, a native Android app and an admin panel that runs every deal.",
-    laptop: "/work/drivebloc/website.png",
-    phone: "/work/drivebloc/screenshot-2-groups.png",
+    laptop: "/work/tex/drivebloc-website.jpg",
+    phone: "/work/tex/drivebloc-app.jpg",
   },
   {
     kicker: "AI products + games",
     title: "AI systems and apps people enjoy",
     body: "DreamRole matches candidates to jobs from their resume with proctored tests; FlowShift and Neon Escape are polished Android games.",
-    laptop: "/work/dreamrole/jobs.png",
-    phone: "/work/flowshift/play.png",
+    laptop: "/work/tex/dreamrole-jobs.jpg",
+    phone: "/work/tex/flowshift-play.jpg",
   },
 ];
 
+// 3D screens use light JPEG copies in /work/tex (about 7x smaller than the PNGs)
 const DEVICE_STAGES = STAGES.map(({ laptop, phone }) => ({ laptop, phone }));
 
 /**
