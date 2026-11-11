@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useCan3D } from "@/hooks/useCan3D";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useSceneVisibility } from "@/hooks/useSceneVisibility";
 
 const SceneCanvas = dynamic(
@@ -44,7 +43,7 @@ function useIdleReady() {
 /**
  * Lazy hero 3D:
  * - never SSR'd (dynamic, ssr:false)
- * - tablets / desktops only — phones get the CSS layer (keeps scrolling smooth)
+ * - phones included, at a lighter quality (lower resolution, smaller mark)
  * - loads after the page is idle, so text and buttons appear first
  * - skipped under prefers-reduced-motion or without a real GPU
  * - pauses off-screen, unmounted once scrolled well past
@@ -52,7 +51,6 @@ function useIdleReady() {
 export function HeroCanvas() {
   const reduced = useReducedMotion();
   const can3D = useCan3D();
-  const wide = useMediaQuery("(min-width: 768px)");
   const idle = useIdleReady();
   const wrapRef = useRef<HTMLDivElement>(null);
   const { mounted, active } = useSceneVisibility(wrapRef);
@@ -65,7 +63,7 @@ export function HeroCanvas() {
       <div className="absolute inset-0 bg-[radial-gradient(40%_50%_at_65%_85%,color-mix(in_oklab,var(--blue)_12%,transparent),transparent_70%)]" />
       <div className="hero-mesh absolute inset-0 transition-opacity duration-500" />
 
-      {!reduced && can3D && wide && idle && mounted && (
+      {!reduced && can3D && idle && mounted && (
         <SceneCanvas className="absolute inset-0 animate-[fade-in_0.8s_ease_both]" paused={!active}>
           <HeroScene />
         </SceneCanvas>

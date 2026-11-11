@@ -41,8 +41,8 @@ export function MobileCtaBar() {
       }`}
       style={{ paddingBottom: "max(env(safe-area-inset-bottom), 0px)" }}
     >
-      <div className="flex items-center justify-between gap-4 px-5 py-3">
-        <span className="text-[0.82rem] text-muted">
+      <div className="mobile-cta-inner flex items-center justify-between gap-4 px-5 py-3">
+        <span className="mobile-cta-text text-[0.82rem] text-muted">
           {t("mobile.prompt")}
         </span>
         <button

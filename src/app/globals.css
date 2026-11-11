@@ -1025,3 +1025,18 @@ html.vt-theme * { transition: none !important; }
   .split-hover > span { transition: none; }
   .intro-draw { fill: url(#intro-g); stroke-dashoffset: 0; animation: none; }
 }
+
+
+/* ---------- Host badge (Netlify free plan): keep our buttons clear of it ---------- */
+/* badge = fixed iframe, ~197x64, bottom-right corner */
+html.has-host-badge .mobile-cta-inner {
+  justify-content: flex-start;
+  padding-right: 210px; /* the badge sits over the right side of the bar */
+}
+html.has-host-badge .mobile-cta-text { display: none; }
+@media (min-width: 640px) {
+  /* desktop/tablet: lift the WhatsApp button above the badge */
+  html.has-host-badge .wa-float { bottom: 5rem; }
+}
+/* the footer's last line should not end under the badge */
+html.has-host-badge footer { padding-bottom: 64px; }

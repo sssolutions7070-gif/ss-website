@@ -11,9 +11,14 @@ import { ContactGlobe } from "@/components/three/ContactGlobe";
 import { Decor } from "@/components/graphics/Decor";
 import { IndiaCities } from "@/components/graphics/IndiaCities";
 import { OnlineBadge } from "@/components/ui/OnlineBadge";
+import { useCan3D } from "@/hooks/useCan3D";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function Contact() {
   const { t, lang } = useT();
+  const can3D = useCan3D();
+  const reduced = useReducedMotion();
+  const show3D = can3D && !reduced;
   // sound: sonar pings from Pune to the cities when the globe / map scrolls in
   const mapRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -76,12 +81,8 @@ export function Contact() {
             <WhatsNext />
 
             <div ref={mapRef}>
-            <div className="sm:hidden">
-              <IndiaCities />
-            </div>
-            <div className="hidden sm:block">
-              <ContactGlobe />
-            </div>
+            {/* 3D globe everywhere it can run; the flat city map is the fallback */}
+            {show3D ? <ContactGlobe /> : <IndiaCities />}
             </div>
           </div>
 

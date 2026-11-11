@@ -33,7 +33,7 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label={`Chat with ${company.name} on WhatsApp`}
       className={cn(
-        "group fixed right-4 z-40 flex items-center gap-2 rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_14px_34px_-10px_rgba(37,211,102,0.65)] transition-[transform,opacity] duration-500 ease-[var(--ease)] hover:scale-105 sm:right-6",
+        "wa-float group fixed right-4 z-40 flex items-center gap-2 rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_14px_34px_-10px_rgba(37,211,102,0.65)] transition-[transform,opacity] duration-500 ease-[var(--ease)] hover:scale-105 sm:right-6",
         "bottom-[5.5rem] sm:bottom-6",
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0",
       )}

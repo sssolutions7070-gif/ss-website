@@ -58,6 +58,22 @@ export function GlobalFx() {
   useEffect(() => {
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+    // ---- host badge: Netlify's free plan pins a required "Powered by Netlify"
+    // badge (iframe, ~200x64) to the bottom-right corner. When it's there, flag
+    // <html> so our fixed buttons move out of its way (see .has-host-badge CSS).
+    const flagBadge = () => {
+      const on = !!document.querySelector('iframe[title="Powered by Netlify"]');
+      document.documentElement.classList.toggle("has-host-badge", on);
+      return on;
+    };
+    const badgeObs = new MutationObserver(() => {
+      if (flagBadge()) badgeObs.disconnect();
+    });
+    if (!flagBadge()) {
+      badgeObs.observe(document.body, { childList: true });
+      window.setTimeout(() => badgeObs.disconnect(), 20000);
+    }
+
     // ---- #15 magnetic cards ----
     let mag: HTMLElement | null = null;
     let raf = 0;
@@ -120,6 +136,7 @@ export function GlobalFx() {
     document.addEventListener("click", onClick);
 
     return () => {
+      badgeObs.disconnect();
       document.removeEventListener("pointermove", onMove);
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("click", onClick);
