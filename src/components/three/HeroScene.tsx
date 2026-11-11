@@ -9,18 +9,20 @@ import { useTheme } from "@/hooks/useTheme";
 import { LogoMark3D } from "./LogoMark3D";
 import { HolographicPanel } from "./HolographicPanel";
 import { AuroraPlane } from "./AuroraPlane";
+import { getTilt, isTouchDevice } from "@/lib/deviceTilt";
 
 /** Eases the camera a little with the pointer for parallax depth. */
 function Rig({ intensity = 1 }: { intensity?: number }) {
   const { camera, pointer } = useThree();
   const target = useRef(new THREE.Vector3());
+  // phones have no mouse: use the gyroscope / scroll sway instead
+  const touch = useRef(isTouchDevice());
 
   useFrame(() => {
-    target.current.set(
-      pointer.x * 0.6 * intensity,
-      0.15 + pointer.y * 0.35 * intensity,
-      9,
-    );
+    const t = touch.current ? getTilt() : null;
+    const px = t ? t.x * 2 : pointer.x;
+    const py = t ? -t.y * 2 : pointer.y;
+    target.current.set(px * 0.6 * intensity, 0.15 + py * 0.35 * intensity, 9);
     camera.position.lerp(target.current, 0.04);
     camera.lookAt(0, 0, 0);
   });
@@ -62,7 +64,7 @@ export function HeroScene() {
         <Lightformer intensity={light ? 1.1 : 0.8} position={[0, -4, 1]} scale={[8, 3, 1]} color={light ? "#67e8f9" : "#3b7bff"} />
       </Environment>
 
-      <Rig intensity={isMobile ? 0.4 : 1} />
+      <Rig intensity={isMobile ? 0.9 : 1} />
 
       {/* living shader backdrop: flowing colour + cursor glow */}
       <AuroraPlane light={light} />
@@ -76,6 +78,16 @@ export function HeroScene() {
           </Float>
         </group>
 
+        {isMobile && (
+          <HolographicPanel
+            position={[0.55, 5.35, -2.4]}
+            rotation={[0.08, -0.45, -0.04]}
+            width={1.7}
+            height={1.15}
+            light={light}
+            opacity={0.5}
+          />
+        )}
         {!isMobile && (
           <>
             <HolographicPanel

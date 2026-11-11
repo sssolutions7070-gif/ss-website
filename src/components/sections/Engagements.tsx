@@ -89,7 +89,7 @@ export function Engagements() {
                 data-magnetic
                 onMouseEnter={() => setHot(i)}
                 className={cn(
-                  "relative flex h-full flex-col rounded-[28px] border p-7 transition-transform duration-500 ease-[var(--ease)] hover:-translate-y-1.5 sm:p-8",
+                  "touch-tilt relative flex h-full flex-col rounded-[28px] border p-7 transition-transform duration-500 ease-[var(--ease)] hover:-translate-y-1.5 sm:p-8",
                   p.popular
                     ? "spot-card ring-anim border-transparent bg-[linear-gradient(160deg,#6a46ff,#3d63ff)] text-white shadow-[0_40px_80px_-30px_rgba(106,70,255,0.7)]"
                     : "glass-card border-border bg-surface shadow-[var(--card-shadow)]",

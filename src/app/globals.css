@@ -1040,3 +1040,39 @@ html.has-host-badge .mobile-cta-text { display: none; }
 }
 /* the footer's last line should not end under the badge */
 html.has-host-badge footer { padding-bottom: 64px; }
+
+
+/* ======================================================================
+   Phone 3D: touch / scroll versions of the mouse-only 3D effects
+   ====================================================================== */
+/* cards rise up from a 3D tilt as they scroll into view (touch screens) */
+@keyframes touch-tilt {
+  from { transform: perspective(900px) rotateX(22deg) translateY(36px) scale(0.94); opacity: 0.35; }
+  to { transform: perspective(900px) rotateX(0deg) translateY(0) scale(1); opacity: 1; }
+}
+@media (hover: none), (pointer: coarse) {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .touch-tilt {
+        transform-origin: 50% 100%;
+        animation: touch-tilt linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 35%;
+      }
+    }
+  }
+}
+
+/* founder cards: tap to flip */
+.flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+@media (hover: none) {
+  /* don't leave a card stuck flipped from focus after tapping elsewhere */
+  /* phones keep a "sticky" hover after a tap — only the tap state flips the card */
+  .flip-card:hover:not(.is-flipped) .flip-inner,
+  .flip-card:focus-within:not(.is-flipped) .flip-inner { transform: none; }
+}
+
+/* floating 3D shapes: shown on phones too, smaller and softer */
+@media (max-width: 1023px) {
+  .decor-shape-sm { transform-origin: center; scale: 0.55; opacity: 0.75; }
+}

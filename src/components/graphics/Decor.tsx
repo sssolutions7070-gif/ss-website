@@ -99,7 +99,7 @@ export function Decor({ preset }: { preset: keyof typeof PRESETS }) {
       {p.shapes?.map((s, i) => (
         <span
           key={`s${i}`}
-          className={`decor-shape shape-${s.kind} ${s.desktopOnly ? "hidden lg:block" : ""}`}
+          className={`decor-shape shape-${s.kind} ${s.desktopOnly ? "decor-shape-sm" : ""}`}
           style={
             {
               left: s.x,

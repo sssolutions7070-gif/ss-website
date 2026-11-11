@@ -131,7 +131,7 @@ export function ProjectCard({
       data-cursor-label="View"
       className={cn(
         "group relative flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface text-left shadow-[var(--card-shadow)]",
-        "transition-[transform,border-color,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_40px_90px_-40px_var(--glow)]",
+        "touch-tilt transition-[transform,border-color,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_40px_90px_-40px_var(--glow)]",
         large && "lg:flex-row",
       )}
     >

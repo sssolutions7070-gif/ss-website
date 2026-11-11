@@ -50,7 +50,7 @@ export function Industries() {
                   href={`/work/${ind.project}`}
                   label={p?.title ?? ind.name}
                   accent={ind.color}
-                  className="glass-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-surface p-6 shadow-[var(--card-shadow)] transition-[transform,border-color] duration-500 ease-[var(--ease)] hover:-translate-y-1 hover:border-border-strong"
+                  className="touch-tilt glass-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-surface p-6 shadow-[var(--card-shadow)] transition-[transform,border-color] duration-500 ease-[var(--ease)] hover:-translate-y-1 hover:border-border-strong"
                 >
                   <span
                     aria-hidden

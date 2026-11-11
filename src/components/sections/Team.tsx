@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { Phone, RotateCw } from "lucide-react";
 import { siWhatsapp } from "simple-icons";
 import { company } from "@/data/company";
@@ -16,6 +17,8 @@ const GRADIENTS = ["linear-gradient(140deg,#6a46ff,#3d63ff)", "linear-gradient(1
  * Uses initials until photos are added (put them in /public/team and set `photo`).
  */
 export function Team() {
+  // tap to flip (phones have no hover)
+  const [flipped, setFlipped] = useState<number | null>(null);
   return (
     <section id="team" className="section relative isolate pt-0">
       <Decor preset="team" />
@@ -34,7 +37,15 @@ export function Team() {
               .join("");
             return (
               <ScrollReveal key={p.phoneHref} delay={i * 0.08}>
-                <div className="flip-card h-[340px]" tabIndex={0} aria-label={`${p.name}, ${p.role}`}>
+                <div
+                  className={`flip-card h-[340px] ${flipped === i ? "is-flipped" : ""}`}
+                  tabIndex={0}
+                  aria-label={`${p.name}, ${p.role}`}
+                  onClick={(e) => {
+                    if ((e.target as Element).closest("a")) return; // let the WhatsApp / call links work
+                    setFlipped(flipped === i ? null : i);
+                  }}
+                >
                   <div className="flip-inner">
                     {/* front */}
                     <div className="flip-face glass-card flex flex-col overflow-hidden rounded-[28px] border border-border bg-surface shadow-[var(--card-shadow)]">

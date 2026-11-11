@@ -8,7 +8,6 @@ import { AnimatedHeading } from "@/components/ui/AnimatedHeading";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TextLink } from "@/components/ui/TextLink";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useIsMobile } from "@/hooks/useMediaQuery";
 import { useT } from "@/i18n/LanguageProvider";
 import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -57,7 +56,6 @@ function Reveal({
 
 export function Hero() {
   const reduced = useReducedMotion();
-  const isMobile = useIsMobile();
   const { t, lang } = useT();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
@@ -115,7 +113,7 @@ export function Hero() {
     >
     <motion.div
       className="relative flex min-h-[100svh] origin-top flex-col justify-center overflow-hidden pt-32 pb-24 md:pt-36"
-      style={reduced || isMobile ? undefined : { scale: stageScale, rotateX: stageTilt, borderRadius: stageRadius }}
+      style={reduced ? undefined : { scale: stageScale, rotateX: stageTilt, borderRadius: stageRadius }}
     >
       <HeroCanvas />
 

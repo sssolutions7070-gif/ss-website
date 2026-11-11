@@ -49,7 +49,7 @@ function ServiceCard({ service, i }: { service: Service; i: number }) {
       onPointerLeave={onLeave}
       style={{ ["--accent" as string]: accent }}
       className={cn(
-        "glass-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-surface p-6 shadow-[var(--card-shadow)] transition-[transform,border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-border-strong sm:p-7",
+        "touch-tilt glass-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-surface p-6 shadow-[var(--card-shadow)] transition-[transform,border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-border-strong sm:p-7",
         wide && "lg:p-9",
       )}
     >

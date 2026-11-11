@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Hand } from "lucide-react";
@@ -10,6 +10,7 @@ import { useHasPointer } from "@/hooks/useMediaQuery";
 import { TransitionLink } from "@/components/providers/PageTransition";
 import { cn } from "@/lib/utils";
 import { sound } from "@/lib/sound";
+import { bindTilt, isTouchDevice } from "@/lib/deviceTilt";
 
 const bfs = projects.find((p) => p.id === "best-food-services")!;
 const SCREENS = (bfs.gallery ?? []).filter((g) => g.portrait);
@@ -31,6 +32,13 @@ export function AppDemo() {
     setDir(d);
     setI((v) => (v + d + n) % n);
   };
+
+  // phones: the 3D phone follows the device tilt (or scroll sway)
+  useEffect(() => {
+    const el = phone.current;
+    if (!el || reduced || !isTouchDevice()) return;
+    return bindTilt(el, (x, y) => `rotateY(${-12 + x * 40}deg) rotateX(${6 - y * 26}deg)`);
+  }, [reduced]);
 
   const tilt = (e: PointerEvent<HTMLDivElement>) => {
     if (!hasPointer || reduced || !phone.current) return;

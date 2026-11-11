@@ -15,6 +15,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useHasPointer, useIsMobile } from "@/hooks/useMediaQuery";
 import { sound } from "@/lib/sound";
+import { getTilt, isTouchDevice } from "@/lib/deviceTilt";
 
 /* ---------- code that "types" in the editor ---------- */
 type Tok = [string, string]; // [className, text]
@@ -159,6 +160,20 @@ export function DevStack() {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  // phones: layers follow the device tilt (or scroll sway) while in view
+  useEffect(() => {
+    if (reduced || !inView || !isTouchDevice()) return;
+    let raf = 0;
+    const loop = () => {
+      const t = getTilt();
+      rx.set(55 - t.y * 28);
+      rz.set(-38 + t.x * 32);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, reduced, rx, rz]);
 
   const onMove = (e: React.PointerEvent) => {
     if (!hasPointer || reduced) return;
