@@ -11,12 +11,16 @@ const STORAGE_KEY = "ss-theme";
  * page never flashes the wrong colours. Light is the default.
  */
 /**
- * Some browser extensions (form fillers / password managers) stamp an
+ * Runs in <head> before React hydrates:
+ * 1. Netlify injects an HTML comment ("This site is hosted on Netlify…") into
+ *    <head> when serving pages; React sees that extra node and throws a
+ *    hydration mismatch (#418). Remove it (and the blank text node it leaves).
+ * 2. Some browser extensions (form fillers / password managers) stamp an
  * `fdprocessedid` attribute onto every button and input before React hydrates,
  * which triggers a hydration-mismatch warning. Strip it for the first few
  * seconds so the server and client markup match.
  */
-export const EXTENSION_ATTR_SCRIPT = `(function(){try{var A=['fdprocessedid','bis_skin_checked','__processed'];var clean=function(n){for(var i=0;i<A.length;i++){if(n.hasAttribute&&n.hasAttribute(A[i]))n.removeAttribute(A[i]);}};var mo=new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==='attributes')clean(m.target);else for(var j=0;j<m.addedNodes.length;j++){var n=m.addedNodes[j];if(n.nodeType===1){clean(n);var q=n.querySelectorAll('['+A.join('],[')+']');for(var k=0;k<q.length;k++)clean(q[k]);}}}});mo.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:A});setTimeout(function(){mo.disconnect();},8000);}catch(e){}})();`;
+export const EXTENSION_ATTR_SCRIPT = `(function(){try{var h=document.head;if(h){for(var c=h.firstChild;c;){var n=c.nextSibling;if((c.nodeType===8&&/hosted on Netlify/.test(c.nodeValue||''))||(c.nodeType===3&&!/\\S/.test(c.nodeValue||'')))h.removeChild(c);c=n;}}}catch(e){}})();(function(){try{var A=['fdprocessedid','bis_skin_checked','__processed'];var clean=function(n){for(var i=0;i<A.length;i++){if(n.hasAttribute&&n.hasAttribute(A[i]))n.removeAttribute(A[i]);}};var mo=new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==='attributes')clean(m.target);else for(var j=0;j<m.addedNodes.length;j++){var n=m.addedNodes[j];if(n.nodeType===1){clean(n);var q=n.querySelectorAll('['+A.join('],[')+']');for(var k=0;k<q.length;k++)clean(q[k]);}}}});mo.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:A});setTimeout(function(){mo.disconnect();},8000);}catch(e){}})();`;
 
 export const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}');document.documentElement.dataset.theme=t==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
